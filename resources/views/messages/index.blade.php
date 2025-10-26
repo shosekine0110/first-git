@@ -18,11 +18,16 @@
                 @foreach ($messages as $message)
                 <tr>
                     <td><a class="link link-hover text-info" href="{{ route('messages.show', $message->id) }}">{{ $message->id }}</a></td>
+                    <td>{{ $message->title }}
                     <td>{{ $message->content }}</td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
     @endif
+
+
+    {{-- メッセージ作成ページへのリンク --}}
+    <a class="btn btn-neutral" href="{{ route('messages.create') }}">新規メッセージの投稿</a>
 
 @endsection

@@ -14,6 +14,12 @@
         </tr>
 
         <tr>
+            <th>タイトル</th>
+            <td>{{ $message->title }}</td>
+        </tr>
+
+
+        <tr>
             <th>メッセージ</th>
             <td>{{ $message->content }}</td>
         </tr>
@@ -30,5 +36,5 @@
         <button type="submit" class="btn btn-error btn-outline"
             onclick="return confirm('id = {{ $message->id }} のメッセージを削除します。よろしいですか？')">削除</button>
     </form>
-    
+
 @endsection
