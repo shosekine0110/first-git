@@ -42,6 +42,12 @@ class MessagesController extends Controller
     public function show(string $id)
     {
         //
+        $message = Message::findOrFail($id);
+
+        // メッセージ詳細ビューでそれを表示
+        return view('messages.show', [
+            'message' => $message,
+        ]);
     }
 
     /**
@@ -49,7 +55,13 @@ class MessagesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+         // idの値でメッセージを検索して取得
+        $message = Message::findOrFail($id);
+
+        // メッセージ編集ビューでそれを表示
+        return view('messages.edit', [
+            'message' => $message,
+        ]);
     }
 
     /**
@@ -57,7 +69,14 @@ class MessagesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // idの値でメッセージを検索して取得
+        $message = Message::findOrFail($id);
+        // メッセージを更新
+        $message->content = $request->content;
+        $message->save();
+
+        // トップページへリダイレクトさせる
+        return redirect('/');
     }
 
     /**
@@ -65,6 +84,12 @@ class MessagesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // idの値でメッセージを検索して取得
+        $message = Message::findOrFail($id);
+        // メッセージを削除
+        $message->delete();
+
+        // トップページへリダイレクトさせる
+        return redirect('/');
     }
 }
